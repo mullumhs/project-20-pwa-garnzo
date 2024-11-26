@@ -11,12 +11,22 @@
             half width on medium screens, 
             and one-third width on large screens -->
       <div class="card movie-card">
-        <img src="callofduty.jpg" class="card-img-top" />
+        <img
+          src="{{ url_for('static', filename='123.jpg') }}"
+          alt="Call Of Duty"
+          class="card-img-top"
+        />
         <div class="card-body">
           <h5 class="card-title">Call Of Duty</h5>
-          <p class="card-text">us war trainer</p>
+          <p class="card-text">
+            Call of Duty is a military first-person shooter video game series
+            and media franchise published by Activision, starting in 2003. The
+            games were first developed by Infinity Ward, then by Treyarch and
+            Sledgehammer Games. Several spin-off and handheld games were made by
+            other developers.
+          </p>
           <button
-            class="btn btn-custom me-2"
+            class="btn btn-dark"
             data-bs-toggle="modal"
             data-bs-target="#editMovieModal"
           >
@@ -34,6 +44,88 @@
     </div>
 
     {% endfor %}
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="deleteMovieModal"
+  tabindex="-1"
+  aria-labelledby="deleteMovieModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteMovieModal">Delete Game</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          class="btn btn-danger"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="editMovieModal"
+  tabindex="-1"
+  aria-labelledby="editMovieModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editMovieModal">Edit Game</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          class="btn btn-primary"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
