@@ -11,7 +11,7 @@ class Game(db.Model):
     genre = db.Column(db.Text, nullable=True)
     publisher = db.Column(db.Date, nullable=True)
     year = db.Column(db.Integer, nullable=True)
-    rating = db.Column(db.Boolean, default=True)
+    rating = db.Column(db.Float, default=True)
 
     def __repr__(self):
         return f'<Task {self.title}>'

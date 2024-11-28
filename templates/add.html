@@ -1,0 +1,95 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<div class="container px-5 my-5">
+  <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="post">
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="title"
+        type="text"
+        placeholder="Title"
+        data-sb-validations="required"
+      />
+      <label for="title">Title</label>
+      <div class="invalid-feedback" data-sb-feedback="title:required">
+        Title is required.
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="genre"
+        type="text"
+        placeholder="Genre"
+        data-sb-validations="required"
+      />
+      <label for="genre">Genre</label>
+      <div class="invalid-feedback" data-sb-feedback="genre:required">
+        Genre is required.
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="publisher"
+        type="text"
+        placeholder="Publisher"
+        data-sb-validations="required"
+      />
+      <label for="publisher">Publisher</label>
+      <div class="invalid-feedback" data-sb-feedback="publisher:required">
+        Publisher is required.
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="year"
+        type="text"
+        placeholder="Year"
+        data-sb-validations="required"
+      />
+      <label for="year">Year</label>
+      <div class="invalid-feedback" data-sb-feedback="year:required">
+        Year is required.
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="rating"
+        type="text"
+        placeholder="Rating"
+        data-sb-validations="required"
+      />
+      <label for="rating">Rating</label>
+      <div class="invalid-feedback" data-sb-feedback="rating:required">
+        Rating is required.
+      </div>
+    </div>
+    <div class="d-none" id="submitSuccessMessage">
+      <div class="text-center mb-3">
+        <div class="fw-bolder">Form submission successful!</div>
+        <p>To activate this form, sign up at</p>
+        <a href="https://startbootstrap.com/solution/contact-forms"
+          >https://startbootstrap.com/solution/contact-forms</a
+        >
+      </div>
+    </div>
+    <div class="d-none" id="submitErrorMessage">
+      <div class="text-center text-danger mb-3">Error sending message!</div>
+    </div>
+    <div class="d-grid">
+      <button
+        class="btn btn-primary btn-lg disabled"
+        id="submitButton"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+{% endblock %}
