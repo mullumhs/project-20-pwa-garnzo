@@ -68,7 +68,7 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">...</div>
+      <div class="modal-body text-center fw-bold">Press Delete to Confirm</div>
       <div class="modal-footer">
         <button
           type="button"
@@ -110,7 +110,102 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">...</div>
+      <div class="modal-body">
+        <div class="container px-5 my-5">
+          <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <div class="mb-3">
+              <label class="form-label" for="title">Title</label>
+              <input
+                class="form-control"
+                id="title"
+                type="text"
+                placeholder="Title"
+                data-sb-validations="required"
+              />
+              <div class="invalid-feedback" data-sb-feedback="title:required">
+                Title is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="genre">Genre</label>
+              <input
+                class="form-control"
+                id="genre"
+                type="text"
+                placeholder="Genre"
+                data-sb-validations="required"
+              />
+              <div class="invalid-feedback" data-sb-feedback="genre:required">
+                Genre is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="publisher">Publisher</label>
+              <input
+                class="form-control"
+                id="publisher"
+                type="text"
+                placeholder="Publisher"
+                data-sb-validations="required"
+              />
+              <div
+                class="invalid-feedback"
+                data-sb-feedback="publisher:required"
+              >
+                Publisher is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="year">Year</label>
+              <input
+                class="form-control"
+                id="year"
+                type="text"
+                placeholder="Year"
+                data-sb-validations="required"
+              />
+              <div class="invalid-feedback" data-sb-feedback="year:required">
+                Year is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="rating">Rating</label>
+              <input
+                class="form-control"
+                id="rating"
+                type="text"
+                placeholder="Rating"
+                data-sb-validations="required"
+              />
+              <div class="invalid-feedback" data-sb-feedback="rating:required">
+                Rating is required.
+              </div>
+            </div>
+            <div class="d-none" id="submitSuccessMessage">
+              <div class="text-center mb-3">
+                <div class="fw-bolder">
+                  Edit Sucsessful, Please Save Changes
+                </div>
+              </div>
+            </div>
+            <div class="d-none" id="submitErrorMessage">
+              <div class="text-center text-danger mb-3">
+                Error sending message!
+              </div>
+            </div>
+            <div class="d-grid">
+              <button
+                class="btn btn-primary btn-lg disabled"
+                id="submitButton"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+      </div>
       <div class="modal-footer">
         <button
           type="button"

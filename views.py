@@ -8,9 +8,8 @@ from models import db, Game # Also import your database model here
 # You can also use flash for displaying status messages
 
 def init_routes(app):
-
-    @app.route('/home', methods=['GET'])
-    def get_items():
+    @app.route('/', methods=['GET'])
+    def home():
         # This route should retrieve all items from the database and display them on the page.
         return render_template('index.html', message='Displaying all items')
 
@@ -34,8 +33,6 @@ def init_routes(app):
     def update_item():
         # This route should handle updating an existing item identified by the given ID.
         return render_template('index.html', message=f'Item updated successfully')
-
-
 
     @app.route('/delete', methods=['POST'])
     def delete_item():
