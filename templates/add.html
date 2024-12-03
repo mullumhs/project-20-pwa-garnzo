@@ -1,71 +1,66 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
 <div class="container px-5 my-5">
-  <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="post">
+  <form id="contactForm" action="/add" method="post">
     <div class="form-floating mb-3">
       <input
         class="form-control"
         id="title"
         type="text"
         placeholder="Title"
+        name="title"
         data-sb-validations="required"
       />
       <label for="title">Title</label>
-      <div class="invalid-feedback" data-sb-feedback="title:required">
-        Title is required.
-      </div>
+      <div class="invalid-feedback">Title is required.</div>
     </div>
     <div class="form-floating mb-3">
       <input
         class="form-control"
         id="genre"
         type="text"
+        name="genre"
         placeholder="Genre"
         data-sb-validations="required"
       />
       <label for="genre">Genre</label>
-      <div class="invalid-feedback" data-sb-feedback="genre:required">
-        Genre is required.
-      </div>
+      <div class="invalid-feedback">Genre is required.</div>
     </div>
     <div class="form-floating mb-3">
       <input
         class="form-control"
         id="publisher"
         type="text"
+        name="publisher"
         placeholder="Publisher"
         data-sb-validations="required"
       />
       <label for="publisher">Publisher</label>
-      <div class="invalid-feedback" data-sb-feedback="publisher:required">
-        Publisher is required.
-      </div>
+      <div class="invalid-feedback">Publisher is required.</div>
     </div>
     <div class="form-floating mb-3">
       <input
         class="form-control"
         id="year"
         type="text"
+        name="year"
         placeholder="Year"
         data-sb-validations="required"
       />
       <label for="year">Year</label>
-      <div class="invalid-feedback" data-sb-feedback="year:required">
-        Year is required.
-      </div>
+      <div class="invalid-feedback">Year is required.</div>
     </div>
     <div class="form-floating mb-3">
       <input
         class="form-control"
         id="rating"
         type="text"
+        name="rating"
         placeholder="Rating"
         data-sb-validations="required"
       />
       <label for="rating">Rating</label>
-      <div class="invalid-feedback" data-sb-feedback="rating:required">
-        Rating is required.
-      </div>
+      <div class="invalid-feedback">Rating is required.</div>
     </div>
     <div class="text-white">
       <div class="d-none" id="submitSuccessMessage">
