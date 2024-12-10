@@ -18,10 +18,11 @@ def init_routes(app):
         if request.method == 'POST':
             new_game = Game(
             title=request.form['title'],
-            director=request.form['director'],
+            publisher=request.form['publisher'],
             year=int(request.form['year']),
-            rating=float(request.form['rating'])
-        )
+            rating=float(request.form['rating']),
+            genre=request.form['title'],
+            )
             db.session.add(new_game)
             db.session.commit()
             return redirect(url_for('index'))
