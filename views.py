@@ -11,7 +11,8 @@ def init_routes(app):
     @app.route('/', methods=['GET'])
     def home():
         # This route should retrieve all items from the database and display them on the page.
-        return render_template('index.html', message='Displaying all items')
+        games = Game.query.all()
+        return render_template('index.html', games = games)
 
     @app.route('/add', methods=['GET', 'POST'])
     def add():
@@ -25,17 +26,25 @@ def init_routes(app):
             )
             db.session.add(new_game)
             db.session.commit()
-            return redirect(url_for('index'))
+            return redirect(url_for('home'))
         else:
             # Display the add item form (GET request)
             return render_template('add.html')
 
-    @app.route('/update', methods=['POST'])
-    def update_item():
-        # This route should handle updating an existing item identified by the given ID.
-        return render_template('index.html', message=f'Item updated successfully')
+    @app.route('/update', methods=['GET','POST'])
+    def update():
+        id = request.args.get('id')  		# Get the item ID from form
+        game = Game.query.get(id)  	# Fetch item by ID
+        #game.name = request.form.get('name')  	# Update name
+        #db.session.commit()  			# Commit changes
+        #return redirect(url_for('home'))
+        return render_template('edit.html', game = game)
+        return redirect(url_for('home'))
 
-    @app.route('/delete', methods=['POST'])
-    def delete_item():
-        # This route should handle deleting an existing item identified by the given ID.
-        return render_template('index.html', message=f'Item deleted successfully')
+    @app.route('/delete', methods=['GET'])
+    def delete():
+        id = request.args.get('id')  	# Get the item ID from form
+        game = Game.query.get(id)  # Fetch item by ID
+        db.session.delete(game)  	# Delete item
+        db.session.commit()  		# Commit changes
+        return redirect(url_for('home'))

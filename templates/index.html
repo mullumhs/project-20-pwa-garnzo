@@ -7,224 +7,34 @@
 
 <div class="container">
   <div class="row">
-    {% for i in range(12) %}
+    {% for game in games %}
     <div class="col-12 col-md-6 col-lg-4 mb-4">
       <!-- This column will be full width on small screens, 
             half width on medium screens, 
             and one-third width on large screens -->
       <div class="card movie-card">
         <img
-          src="{{ url_for('static', filename='123.jpg') }}"
+          src="{{ url_for('static', filename='images.png') }}"
           alt="Call Of Duty"
           class="card-img-top"
         />
         <div class="card-body">
-          <h5 class="card-title">Call Of Duty</h5>
+          <h5 class="card-title">{{game.title}}</h5>
           <p class="card-text">
-            Call of Duty is a military first-person shooter video game series
-            and media franchise published by Activision, starting in 2003. The
-            games were first developed by Infinity Ward, then by Treyarch and
-            Sledgehammer Games. Several spin-off and handheld games were made by
-            other developers.
+            {{game.genre}} Game Released by {{game.publisher}} in {{game.year}},
+            Viewers rating out of 10 is a, {{game.rating}}
           </p>
-          <button
-            class="btn btn-dark"
-            data-bs-toggle="modal"
-            data-bs-target="#editMovieModal"
+          <a href="{{url_for('update',id=game.id)}}"
+            ><button class="btn btn-dark">Edit</button></a
           >
-            Edit
-          </button>
-          <button
-            class="btn btn-danger"
-            data-bs-toggle="modal"
-            data-bs-target="#deleteMovieModal"
+          <a href="{{url_for('delete',id=game.id)}}"
+            ><button class="btn btn-danger">Delete</button></a
           >
-            Delete
-          </button>
         </div>
       </div>
     </div>
 
     {% endfor %}
-  </div>
-</div>
-
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="deleteMovieModal"
-  tabindex="-1"
-  aria-labelledby="deleteMovieModal"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="deleteMovieModal">Delete Game</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body text-center fw-bold">Press Delete to Confirm</div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-outline-secondary"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >
-          Close
-        </button>
-        <button
-          type="button"
-          class="btn btn-outline-danger"
-          class="btn btn-danger"
-          data-bs-dismiss="modal"
-        >
-          Delete
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="editMovieModal"
-  tabindex="-1"
-  aria-labelledby="editMovieModal"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="editMovieModal">Edit Game</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="container px-5 my-5">
-          <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-            <div class="mb-3">
-              <label class="form-label" for="title">Title</label>
-              <input
-                class="form-control"
-                id="title"
-                type="text"
-                placeholder="Title"
-                data-sb-validations="required"
-              />
-              <div class="invalid-feedback" data-sb-feedback="title:required">
-                Title is required.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="genre">Genre</label>
-              <input
-                class="form-control"
-                id="genre"
-                type="text"
-                placeholder="Genre"
-                data-sb-validations="required"
-              />
-              <div class="invalid-feedback" data-sb-feedback="genre:required">
-                Genre is required.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="publisher">Publisher</label>
-              <input
-                class="form-control"
-                id="publisher"
-                type="text"
-                placeholder="Publisher"
-                data-sb-validations="required"
-              />
-              <div
-                class="invalid-feedback"
-                data-sb-feedback="publisher:required"
-              >
-                Publisher is required.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="year">Year</label>
-              <input
-                class="form-control"
-                id="year"
-                type="text"
-                placeholder="Year"
-                data-sb-validations="required"
-              />
-              <div class="invalid-feedback" data-sb-feedback="year:required">
-                Year is required.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="rating">Rating</label>
-              <input
-                class="form-control"
-                id="rating"
-                type="text"
-                placeholder="Rating"
-                data-sb-validations="required"
-              />
-              <div class="invalid-feedback" data-sb-feedback="rating:required">
-                Rating is required.
-              </div>
-            </div>
-            <div class="d-none" id="submitSuccessMessage">
-              <div class="text-center mb-3">
-                <div class="fw-bolder">
-                  Edit Sucsessful, Please Save Changes
-                </div>
-              </div>
-            </div>
-            <div class="d-none" id="submitErrorMessage">
-              <div class="text-center text-danger mb-3">
-                Error sending message!
-              </div>
-            </div>
-            <div class="d-grid">
-              <button
-                class="btn btn-primary btn-lg disabled"
-                id="submitButton"
-                type="submit"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-outline-secondary"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >
-          Close
-        </button>
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          class="btn btn-primary"
-          data-bs-dismiss="modal"
-        >
-          Save changes
-        </button>
-      </div>
-    </div>
   </div>
 </div>
 

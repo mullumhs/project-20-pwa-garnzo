@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<div class="container px-5 my-5">
+  <form id="contactForm" action="/update" method="post">
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="title"
+        type="text"
+        placeholder="Title"
+        name="title"
+        value="{{game.title}}"
+      />
+      <label for="title">Title</label>
+      <div class="invalid-feedback">Title is required.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="genre"
+        type="text"
+        name="genre"
+        placeholder="Genre"
+        value="{{game.genre}}"
+      />
+      <label for="genre">Genre</label>
+      <div class="invalid-feedback">Genre is required.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="publisher"
+        type="text"
+        name="publisher"
+        placeholder="Publisher"
+        value="{{game.publisher}}"
+      />
+      <label for="publisher">Publisher</label>
+      <div class="invalid-feedback">Publisher is required.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="year"
+        type="text"
+        name="year"
+        placeholder="Year"
+        value="{{game.year}}"
+      />
+      <label for="year">Year</label>
+      <div class="invalid-feedback">Year is required.</div>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="rating"
+        type="text"
+        name="rating"
+        placeholder="Rating"
+        value="{{game.rating}}"
+      />
+      <label for="rating">Rating</label>
+      <div class="invalid-feedback">Rating is required.</div>
+    </div>
+    <div class="text-white">
+      <div class="d-none" id="submitSuccessMessage">
+        <div class="text-center mb-3">
+          <div class="fw-bolder">Form submission successful!</div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none" id="submitErrorMessage">
+      <div class="text-center text-danger mb-3">Error sending message!</div>
+    </div>
+    <div class="d-grid">
+      <button class="btn btn-primary btn-lg" id="submitButton" type="submit">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+{% endblock %}

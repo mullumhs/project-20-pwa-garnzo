@@ -8,8 +8,8 @@ db = SQLAlchemy()
 class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    genre = db.Column(db.Text, nullable=True)
-    publisher = db.Column(db.Date, nullable=True)
+    genre = db.Column(db.String(100), nullable=True)
+    publisher = db.Column(db.String(100), nullable=True)
     year = db.Column(db.Integer, nullable=True)
     rating = db.Column(db.Float, default=True)
 
