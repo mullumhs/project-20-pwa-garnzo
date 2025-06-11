@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Altuva</title>
+    <title>GameSelect</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -19,7 +19,7 @@
     <!-- Add your navbar here -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Altuva</a>
+        <a class="navbar-brand" href="#">GameSelect</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -31,27 +31,16 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div
-          class="collapse navbar-collapse"
-          class="text-left"
-          id="navbarNavDropdown"
-        >
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('home') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('add') }}">To-Do </a>
+              <a class="nav-link" href="{{ url_for('add') }}">Add</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('update') }}"
-                >Daily Affirmation</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('update') }}"
-                >Habit Tracker
-              </a>
+              <a class="nav-link" href="{{ url_for('update') }}">Edit</a>
             </li>
           </ul>
         </div>

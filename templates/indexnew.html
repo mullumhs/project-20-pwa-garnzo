@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<div class="text-white">
+  <h1 class="text-center">Altuva</h1>
+</div>
+<!-- Add your page-specific content here -->
+
+<div class="container">
+  <div class="row">
+    {% for game in games %}
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <!-- This column will be full width on small screens, 
+            half width on medium screens, 
+            and one-third width on large screens -->
+      <div class="card movie-card">
+        <img
+          src="{{ url_for('static', filename='images.png') }}"
+          alt="Call Of Duty"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{game.title}}</h5>
+          <p class="card-text">
+            {{game.genre}} Game Released by {{game.publisher}} in {{game.year}},
+            Viewers rating out of 10 is a, {{game.rating}}
+          </p>
+          <a href="{{url_for('update',id=game.id)}}"
+            ><button class="btn btn-dark">Edit</button></a
+          >
+          <a href="{{url_for('delete',id=game.id)}}"
+            ><button class="btn btn-danger">Delete</button></a
+          >
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -12,7 +12,7 @@ def init_routes(app):
     def home():
         # This route should retrieve all items from the database and display them on the page.
         games = Game.query.all()
-        return render_template('index.html', games = games)
+        return render_template('indexnew.html', games = games)
 
     @app.route('/add', methods=['GET', 'POST'])
     def add():
