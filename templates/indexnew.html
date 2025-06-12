@@ -8,34 +8,75 @@
 <div class="container">
   <div class="row">
     {% for game in games %}
-    <div class="col-12 col-md-6 col-lg-4 mb-4">
-      <!-- This column will be full width on small screens, 
-            half width on medium screens, 
-            and one-third width on large screens -->
-      <div class="card movie-card">
-        <img
-          src="{{ url_for('static', filename='images.png') }}"
-          alt="Call Of Duty"
-          class="card-img-top"
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{game.title}}</h5>
-          <p class="card-text">
-            {{game.genre}} Game Released by {{game.publisher}} in {{game.year}},
-            Viewers rating out of 10 is a, {{game.rating}}
-          </p>
-          <a href="{{url_for('update',id=game.id)}}"
-            ><button class="btn btn-dark">Edit</button></a
-          >
-          <a href="{{url_for('delete',id=game.id)}}"
-            ><button class="btn btn-danger">Delete</button></a
-          >
+    <div class="container-fluid text-center d-flex justify-content-center">
+      <div class="row align-items-start">
+        <div class="col">
+          <div class="card text-bg-dark mb-3" style="max-width: 18rem">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content. Some quick example text to build
+                on the card title and make up the bulk of the card’s content.
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content. Some quick example text to build
+                on the card title and make up the bulk of the card’s content.
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content. Some quick example text to build
+                on the card title and make up the bulk of the card’s content.
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-bg-dark mb-3" style="max-width: 18rem">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content. Some quick example text to build
+                on the card title and make up the bulk of the card’s content.
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content. Some quick example text to build
+                on the card title and make up the bulk of the card’s content.
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content. Some quick example text to build
+                on the card title and make up the bulk of the card’s content.
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-bg-dark mb-3" style="max-width: 18rem">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content. Some quick example text to build
+                on the card title and make up the bulk of the card’s content.
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content. Some quick example text to build
+                on the card title and make up the bulk of the card’s content.
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content. Some quick example text to build
+                on the card title and make up the bulk of the card’s content.
+                Some quick example text to build on the card title and make up
+                the bulk of the card’s content.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-
-    {% endfor %}
   </div>
-</div>
 
-{% endblock %}
+  {% endblock %}
+</div>
