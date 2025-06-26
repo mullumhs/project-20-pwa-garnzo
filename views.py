@@ -29,7 +29,7 @@ def init_routes(app):
             return redirect(url_for('home'))
         else:
             # Display the add item form (GET request)
-            return render_template('add.html')
+            return render_template('todo.html')
 
     @app.route('/update', methods=['GET','POST'])
     def update():
