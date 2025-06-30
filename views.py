@@ -38,7 +38,7 @@ def init_routes(app):
         #game.name = request.form.get('name')  	# Update name
         #db.session.commit()  			# Commit changes
         #return redirect(url_for('home'))
-        return render_template('edit.html', game = game)
+        return render_template('affirmations.html', game = game)
         return redirect(url_for('home'))
 
     @app.route('/delete', methods=['GET'])
