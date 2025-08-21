@@ -25,10 +25,11 @@ def init_routes(app):
             )
             db.session.add(add_task)
             db.session.commit()
-            return redirect(url_for('home'))
+            return redirect(url_for('add'))
         else:
             # Display the add item form (GET request)
-            return render_template('todo.html')
+            tasks = todo.query.all()
+            return render_template('todo.html', Tasks=tasks)    
 
     @app.route('/update', methods=['GET','POST'])
     def update():

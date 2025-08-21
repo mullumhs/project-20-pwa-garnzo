@@ -13,105 +13,19 @@
           <div class="card-text">
             <p>
               <div class="container">
+                {% for task in Tasks %}
                 <div class="row">
                   <div class="col-2 text-center">
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="on">
-                    <label class="btn btn-outline-primary" for="btncheck1">1</label>
+                    <input type="checkbox" class="btn-check" id="btncheck{{loop.index}}" autocomplete="on">
+                    <label class="btn btn-outline-primary" for="btncheck1">{{task.value}}</label>
                     </div>
                   </div>
                   <div class="col my-2 text-start">
-                    Wake Up + Affirmation
+                    {{task.name}}
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-2 text-center">
-                    <div class="btn-group my-1" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="on">
-                    <label class="btn btn-outline-primary" for="btncheck2">2</label>
-                    </div>
-                  </div>
-                  <div class="col my-2 text-start">
-                    Shower
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2 text-center">
-                    <div class="btn-group my-1" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck3">3</label>
-                    </div>
-                  </div>
-                  <div class="col my-2 text-start">
-                    Get Ready
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2 text-center">
-                    <div class="btn-group my-1" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck4">4</label>
-                    </div>
-                  </div>
-                  <div class="col my-2 text-start">
-                    Work
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2 text-center">
-                    <div class="btn-group my-1" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck5">5</label>
-                    </div>
-                  </div>
-                  <div class="col my-2 text-start">
-                    Gym
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2 text-center">
-                    <div class="btn-group my-1" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck6">6</label>
-                    </div>
-                  </div>
-                  <div class="col my-2 text-start">
-                    Shower
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2 text-center">
-                    <div class="btn-group my-1" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck7">7</label>
-                    </div>
-                  </div>
-                  <div class="col my-2 text-start">
-                    Dinner
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2 text-center">
-                    <div class="btn-group my-1" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck8">8</label>
-                    </div>
-                  </div>
-                  <div class="col my-2 text-start">
-                    Washing
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2 text-center">
-                    <div class="btn-group my-1" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btncheck9">9</label>
-                    </div>
-                  </div>
-                  <div class="col my-2 text-start">
-                    Unwind + Bed
-                  </div>
-                </div>
+                {% endfor %}
               </div>
             </p>
           </div>
