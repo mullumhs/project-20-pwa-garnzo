@@ -26,7 +26,15 @@
                 Add
               </a>
             </li>
-            <li><a class="dropdown-item" href="#">Edit</a></li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="editTaskModalLable"
+                >Edit</a
+              >
+            </li>
             <li><a class="dropdown-item" href="#">Delete</a></li>
           </ul>
         </div>
@@ -96,7 +104,15 @@
                 Add
               </a>
             </li>
-            <li><a class="dropdown-item" href="#">Edit</a></li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="editTaskModalLable"
+                >Edit</a
+              >
+            </li>
             <li><a class="dropdown-item" href="#">Delete</a></li>
           </ul>
         </div>
@@ -168,7 +184,7 @@
           ></button>
         </div>
         <div class="modal-body">
-          <form action="{{ url_for('add') }}" method="post">
+          < action="{{ url_for('add') }}" method="post">
             <div class="mb-3">
               <label for="name" class="form-label">Task Name</label>
               <input
@@ -214,6 +230,13 @@
               />
             </div>
 
+          <div
+          class="modal fade"
+          id="addTaskModal"
+          tabindex="-1"
+          aria-labelledby="editTaskModalLable"
+          aria-hidden="true"
+          >
             <div class="modal-footer">
               <button
                 type="button"
@@ -230,7 +253,7 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content shadow-lg rounded-3">
             <div class="modal-header">
-              <h5 class="modal-title" id="addTaskModalLabel">Edit Task</h5>
+              <h5 class="modal-title" id="editTaskModalLable">Edit Task</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -322,7 +345,6 @@
       </div>
     </div>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
     {% endblock %}
   </div>
 </div>
