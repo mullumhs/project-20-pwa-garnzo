@@ -31,15 +31,21 @@ def init_routes(app):
             tasks = todo.query.all()
             return render_template('todo.html', Tasks=tasks)    
 
-    @app.route('/update', methods=['GET','POST'])
-    def update():
-        id = request.args.get('id')  		# Get the item ID from form
-        tasks = todo.query.get(id)  	# Fetch item by ID
-        #game.name = request.form.get('name')  	# Update name
-        #db.session.commit()  			# Commit changes
-        #return redirect(url_for('home'))
-        return render_template('affirmations.html', tasks = tasks)
-        return redirect(url_for('home'))
+    @app.route('/edit', methods=['GET','POST'])
+    def edit(id):
+        task = todo.query.get_or_404(id)
+        
+        if request.method == 'POST':
+            task.name = request.form['name']
+            task.type = request.form['type']
+            task.day = int(request.form['day'])
+            task.value = float(request.form['value'])
+
+            db.session.commit()
+            flash("Task Sucsessfully Edited")
+            return redirect(url_for('home'))
+            
+        return render_template('todo.html', task=task)
 
     @app.route('/delete', methods=['GET'])
     def delete():
