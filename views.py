@@ -1,5 +1,11 @@
 from flask import render_template, request, redirect, url_for, flash
 from models import db, todo # Also import your database model here
+types = [
+             "Self Maintainence",
+             "Work",
+             "Rest",
+             "Leisure",
+        ]
 
 # Define your routes inside the 'init_routes' function
 # Feel free to rename the routes and functions as you see fit
@@ -13,27 +19,27 @@ def init_routes(app):
         # This route should retrieve all items from the database and display them on the page.
         tasks = todo.query.all()
         return render_template('indexnew.html', Tasks = tasks)
+    
+    @app.route('/tasks', methods=['GET'])
+    def tasks():
+        tasks = todo.query.all()
+        return render_template('todo.html', Tasks = tasks, types = types)
 
-    @app.route('/add', methods=['GET', 'POST'])
+    @app.route('/add', methods=['POST'])
     def add():
-        if request.method == 'POST':
             add_task = todo(
-            name=request.form['name'],
-            type=request.form['type'],
-            day=int(request.form['day']),
-            value=float(request.form['value']),
+                name=request.form['name'],
+                type=request.form['type'],
+                day=int(request.form['day']),
+                value=float(request.form['value']),
             )
             db.session.add(add_task)
             db.session.commit()
-            return redirect(url_for('add'))
-        else:
-            # Display the add item form (GET request)
-            tasks = todo.query.all()
-            return render_template('todo.html', Tasks=tasks, task=None)    
+            return redirect(url_for('tasks'))  
 
-    @app.route('/edit', methods=['GET','POST'])
+    @app.route('/edit', methods=['POST'])
     def edit():
-        task_id = request.form.get('id')  # Get the ID from hidden field
+        task_id = request.form.get('id')
         task = todo.query.get_or_404(task_id)
         
         task.name = request.form['name']
@@ -43,7 +49,7 @@ def init_routes(app):
 
         db.session.commit()
         flash("Task Successfully Edited")
-        return redirect(url_for('home'))
+        return redirect(url_for('tasks'))
 
     @app.route('/delete', methods=['GET'])
     def delete():
