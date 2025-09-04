@@ -29,23 +29,21 @@ def init_routes(app):
         else:
             # Display the add item form (GET request)
             tasks = todo.query.all()
-            return render_template('todo.html', Tasks=tasks)    
+            return render_template('todo.html', Tasks=tasks, task=None)    
 
     @app.route('/edit', methods=['GET','POST'])
-    def edit(id):
-        task = todo.query.get_or_404(id)
+    def edit():
+        task_id = request.form.get('id')  # Get the ID from hidden field
+        task = todo.query.get_or_404(task_id)
         
-        if request.method == 'POST':
-            task.name = request.form['name']
-            task.type = request.form['type']
-            task.day = int(request.form['day'])
-            task.value = float(request.form['value'])
+        task.name = request.form['name']
+        task.type = request.form['type']
+        task.day = int(request.form['day'])
+        task.value = float(request.form['value'])
 
-            db.session.commit()
-            flash("Task Sucsessfully Edited")
-            return redirect(url_for('home'))
-            
-        return render_template('todo.html', task=task)
+        db.session.commit()
+        flash("Task Successfully Edited")
+        return redirect(url_for('home'))
 
     @app.route('/delete', methods=['GET'])
     def delete():
