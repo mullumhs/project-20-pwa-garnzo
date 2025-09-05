@@ -5,6 +5,7 @@ types = [
              "Work",
              "Rest",
              "Leisure",
+             "Fix",
         ]
 
 # Define your routes inside the 'init_routes' function
