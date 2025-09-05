@@ -4,6 +4,7 @@
   <h3 class="text-white">< Monday ></h3>
   <div class="container text-center">
     <div class="row align-items-center">
+      <!--YESTERDAY VALUES-->
       <div class="col">
         <h5 class="text-white text-start">Yesterday</h5>
         <div class="dropdown ms-auto">
@@ -62,6 +63,8 @@
           </div>
         </div>
       </div>
+
+      <!--TODAY VALUES-->
       <div class="col">
         <h5 class="text-white text-start">Today</h5>
         <div class="dropdown ms-auto">
@@ -120,6 +123,14 @@
           </div>
         </div>
       </div>
+
+      <!--STUFF VALUES-->
+      <div class="col">
+        <h5 class="text-white text-start">stuff</h5>
+        <form action="{{ url_for('complete_day') }}" method="POST">
+          <button type="submit" class="btn btn-primary btn-lg">Complete Day</button>
+        </form>
+      </div>
     </div>
   </div>
   
@@ -163,17 +174,19 @@
                 {% endfor %}
               </select>
             </div>
-
+            {% for task in Tasks %}
             <div class="mb-3">
               <label for="day" class="form-label">Day</label>
               <input
                 type="number"
                 class="form-control"
-                id="day"
+                id="day{{task.id}}"
                 name="day"
-                required
+                value="{{task.day if task else next_day_value }}"
+                readonly
               />
             </div>
+            {% endfor %}
 
             <div class="mb-3">
               <label for="value" class="form-label">Value</label>
@@ -201,6 +214,7 @@
       </div>
     </div>
   </div>
+
 
   <!--Edit-Task-Modal-->
   {% for task in Tasks %}
@@ -254,8 +268,8 @@
                 class="form-control"
                 id="day{{task.id}}"
                 name="day"
-                value="{{task.day}}"
-                required
+                value="{{task.day if task else next_day_value }}"
+                readonly
               />
             </div>
 

@@ -5,7 +5,6 @@ types = [
              "Work",
              "Rest",
              "Leisure",
-             "Fix",
         ]
 
 # Define your routes inside the 'init_routes' function
@@ -21,6 +20,17 @@ def init_routes(app):
         tasks = todo.query.all()
         return render_template('indexnew.html', Tasks = tasks)
     
+    @app.route('/compelte_day', methods=['POST'])
+    def complete_day():
+        current_day = request.form.get('current_day', type=int)
+        tasks = todo.query.all()
+        for task in tasks:
+             task.day += 1
+
+        db.session.commit()
+        flash("Day Completed")
+        return redirect(url_for('tasks'))
+
     @app.route('/tasks', methods=['GET'])
     def tasks():
         tasks = todo.query.all()
