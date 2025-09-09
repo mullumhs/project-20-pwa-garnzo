@@ -38,14 +38,20 @@ def init_routes(app):
 
     @app.route('/add', methods=['POST'])
     def add():
+            name = request.form['name']
+            type_ = request.form['type']
+            day = int(request.form['day'])
+            existing_count = todo.query.filter_by(day=day).count()
+
             add_task = todo(
                 name=request.form['name'],
                 type=request.form['type'],
                 day=int(request.form['day']),
-                value=float(request.form['value']),
+                value=existing_count + 1
             )
             db.session.add(add_task)
             db.session.commit()
+            flash("Task Added Successfully")
             return redirect(url_for('tasks'))  
 
     @app.route('/edit', methods=['POST'])
