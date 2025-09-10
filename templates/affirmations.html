@@ -1,20 +1,83 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-%}
+{% extends "base.html" %} {% block title %}Daily Affirmations{% endblock %} {%
+block content %}
 <div class="container px-5 my-5">
   <div class="fw-bold text-white text-start">
-    <h6 class="mx-4">1/1/25</h6>
-    <h3>< Monday Affirmation ></h3>
+    <h6 class="mx-4">{{ current_date }}</h6>
+    <h3>&lt; {{ current_weekday }} Affirmation &gt;</h3>
   </div>
-  <div class="mb-3">
-    <label for="affirmation" class="form-label"></label>
-    <textarea
-      class="form-control border-dark"
-      id="Affirmation"
-      rows="10"
-    ></textarea>
-    <button type="submit" class="btn btn-primary mt-3">Submit</button>
-  </div>
-</div>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
+  <!-- Add new affirmation -->
+  <form action="{{ url_for('add_affirmation') }}" method="POST">
+    <div class="mb-3">
+      <textarea
+        class="form-control border-dark"
+        name="text"
+        rows="3"
+        placeholder="Add a new affirmation..."
+        required
+      ></textarea>
+      <input type="hidden" name="day" value="{{ next_day_value }}" />
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Add Affirmation</button>
+  </form>
+
+  <!-- Display existing affirmations -->
+  <ul class="list-group">
+    {% for aff in Affirmations %}
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      {{ aff.text }}
+      <button
+        class="btn btn-sm btn-secondary"
+        data-bs-toggle="modal"
+        data-bs-target="#editAffModal{{ aff.id }}"
+      >
+        Edit
+      </button>
+    </li>
+
+    <!-- Edit Modal -->
+    <div
+      class="modal fade"
+      id="editAffModal{{ aff.id }}"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Affirmation</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <form action="{{ url_for('edit_affirmation') }}" method="POST">
+            <input type="hidden" name="id" value="{{ aff.id }}" />
+            <div class="modal-body">
+              <textarea name="text" class="form-control" rows="3">
+{{ aff.text }}</textarea
+              >
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">
+                Save Changes
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </ul>
+</div>
 {% endblock %}
